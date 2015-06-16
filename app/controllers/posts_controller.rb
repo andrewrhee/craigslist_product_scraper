@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def home
-      
+
   end
 
   # GET /posts
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @posts = @posts.where("price > ?", params["min_price"]) if params["min_price"].present?
     @posts = @posts.where("price < ?", params["max_price"]) if params["max_price"].present?
   end
-  
+
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -70,6 +70,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def set_up_subscriptions
+    Post.all.where(last_sent: nil).sample(30).each do |post|
+      if post.email.present? #validate post email
+        post.subscribe
+      end
+    end
+
+    # posts where no prospect exists, create prospect
+
+    redirect_to posts_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -78,6 +90,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
+
       params.require(:post).permit(:heading, :body, :price, :neighborhood, :external_url, :timestamp)
     end
 end

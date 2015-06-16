@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
+<%= link_to posts_set_up_subscription_path, method: :post do %>
+  Cool link here that sets up background send email job thing
+<% end %>
 <div class="container">
   <%= render 'filter' %>
   <% if @posts.empty? %>
     <hr>
     <h3>No results found</h3>
   <% else %>
-  
+
     <table class="table table-hover table-condensed">
       <thead>
         <tr>

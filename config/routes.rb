@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   resources :posts, only: [:index, :show]
   resources :prospects, only: [:new, :create]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'posts#home'
-
+  post "posts/set_up_subscription" => "posts#set_up_subscriptions"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
