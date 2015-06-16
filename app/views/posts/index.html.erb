@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
-<%= link_to posts_set_up_subscription_path, method: :post do %>
-  Cool link here that sets up background send email job thing
-<% end %>
+
 <div class="container">
+  <%= link_to posts_set_up_subscription_path, method: :post, class: "btn btn-info" do %>
+    Send 30 emails
+  <% end %>
   <%= render 'filter' %>
   <% if @posts.empty? %>
     <hr>
