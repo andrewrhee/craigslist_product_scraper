@@ -14,6 +14,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
+gem 'gibbon'
+gem 'sucker_punch'
+gem 'activejob'
 
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production

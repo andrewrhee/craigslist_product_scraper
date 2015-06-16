@@ -17,9 +17,8 @@ namespace :scraper do
   			auth_token: auth_token,
   			anchor: Anchor.first.value,
   			source: "CRAIG",
-  			category_group: "RRRR",
-  			category: "RHFR",
-  			'location.city' => "USA-NYM-BRL",
+  			category_group: "SSSS",
+  			'location.city' => "USA-LAX-LSN",
   			retvals: "location,external_url,heading,body,timestamp,price,images,annotations"
   		}
 
@@ -46,13 +45,7 @@ namespace :scraper do
     		@post.external_url = posting["external_url"]
     		@post.timestamp = posting["timestamp"]
 
-    		@post.bedrooms = posting["annotations"]["bedrooms"] if posting["annotations"]["bedrooms"].present?
-    		@post.bathrooms = posting["annotations"]["bathrooms"] if posting["annotations"]["bathrooms"].present?
-    		@post.sqft = posting["annotations"]["sqft"] if posting["annotations"]["sqft"].present?
-    		@post.cats = posting["annotations"]["cats"] if posting["annotations"]["cats"].present?
-    		@post.dogs = posting["annotations"]["dogs"] if posting["annotations"]["dogs"].present?
-    		@post.w_d_in_unit = posting["annotations"]["w_d_in_unit"] if posting["annotations"]["w_d_in_unit"].present?
-    		@post.street_parking = posting["annotations"]["street_parking"] if posting["annotations"]["street_parking"].present?
+    		@post.email = posting["annotations"]["source_account"] if posting["annotations"]["source_account"].present?
     		# Save Post
     		@post.save
 
@@ -89,7 +82,7 @@ namespace :scraper do
     params = {
       auth_token: auth_token,
       level: "locality",
-      city: "USA-NYM-BRL"
+      region: "USA-LAX-CEN"
     }
 
     # Prepare API request

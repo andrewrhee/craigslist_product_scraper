@@ -12,8 +12,6 @@
           <th class="center">Preview</th>
           <th class="center" width="45%">Heading</th>
           <th class="center">Price</th>
-          <th class="center">Beds</th>
-          <th class="center">Baths</th>
           <th class="center">Neighborhood</th>
           <th class="center">Last Updated</th>
 
@@ -34,8 +32,6 @@
             </td>
             <td style="vertical-align:middle"><%= link_to post.heading, post %></td>
             <td class="center" style="vertical-align:middle"><%= number_to_currency(post.price, precision: 0) %></td>
-            <td class="center" style="vertical-align:middle"><%= post.bedrooms %></td>
-            <td class="center" style="vertical-align:middle"><%= post.bathrooms %></td>
             <td class="center" style="vertical-align:middle"><%= post.neighborhood %></td>
             <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(post.timestamp.to_i))} ago" %></td>
           </tr>

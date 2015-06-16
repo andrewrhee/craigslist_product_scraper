@@ -30,27 +30,13 @@
         <% if @post.neighborhood.present? %>
           Neighborhood: <%= @post.neighborhood %><br>
         <% end %>
-        <% if @post.bedrooms.present? %>
-          Bedrooms: <%= @post.bedrooms %><br>
-        <% end %>
-        <% if @post.bathrooms.present? %>
-          Bathrooms: <%= @post.bathrooms %><br>
-        <% end %>
-        <% if @post.sqft.present? %>
-          Square Footage: <%= @post.sqft %><br>
-        <% end %>
-        <% if @post.cats.present? %>
-          Cats: <%= @post.cats %><br>
-        <% end %>
-        <% if @post.dogs.present? %>
-          Dogs: <%= @post.dogs %><br>
-        <% end %>
-        <% if @post.w_d_in_unit.present? %>
-          Washer/dryer in unit: <%= @post.w_d_in_unit %><br>
-        <% end %>
-        <% if @post.street_parking.present? %>
-          Street parking: <%= @post.street_parking %><br>
-        <% end %>
+        <div class="form-centered">
+          <%= form_for @post, :url => { :controller => "prospects", :action => "create" }, :html => { :method => :post }  do |f| %>
+            Email: <%= @post.email %>
+            <%= f.hidden_field :email, :value => @post.email  %>
+            <%= f.submit "Send Email", name: nil, class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
       <div class="description">
         <h4>Description</h4>

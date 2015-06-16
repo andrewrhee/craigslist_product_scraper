@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615105855) do
+ActiveRecord::Schema.define(version: 20150616024427) do
 
   create_table "anchors", force: :cascade do |t|
     t.string   "value"
@@ -42,15 +42,15 @@ ActiveRecord::Schema.define(version: 20150615105855) do
     t.string   "neighborhood"
     t.string   "external_url"
     t.string   "timestamp"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "bedrooms"
-    t.decimal  "bathrooms"
-    t.integer  "sqft"
-    t.string   "cats"
-    t.string   "dogs"
-    t.string   "w_d_in_unit"
-    t.string   "street_parking"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "email"
+  end
+
+  create_table "prospects", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
