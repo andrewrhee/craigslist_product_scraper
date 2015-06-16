@@ -71,15 +71,18 @@ class PostsController < ApplicationController
   end
 
   def set_up_subscriptions
-    Post.all.where(last_sent: nil).sample(30).each do |post|
+    unsent_count = Post.all.where(last_sent: nil).count
+    Post.all.where(last_sent: nil).limit(30).each do |post|
       if post.email.present? #validate post email
         post.subscribe
       end
     end
+    after_subscribing_unsent_count = Post.all.where(last_sent: nil).count
 
+    subscribed_count = unsent_count - after_subscribing_unsent_count
     # posts where no prospect exists, create prospect
 
-    redirect_to posts_path
+    redirect_to posts_path, notice: "#{subscribed_count} total users subscribed."
   end
 
   private
